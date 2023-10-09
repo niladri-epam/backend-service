@@ -12,3 +12,27 @@ module.exports.hello = async (event) => {
     ),
   };
 };
+
+module.exports.getProductsList = async (event) => {
+  return {
+    statusCode: 200,
+    body: JSON.stringify(products),
+  };
+};
+
+module.exports.getProductsById = async (event) => {
+  const productId = event.pathParameters.productId
+  const productIndex = products.findIndex(p => p.id === productId)
+
+  if (productIndex === -1) {
+    return {
+      statusCode: 404,
+      body: JSON.stringify({})
+    }
+  }
+  return {
+    statusCode: 200,
+    body: JSON.stringify(products[productIndex]),
+  };
+};
+
