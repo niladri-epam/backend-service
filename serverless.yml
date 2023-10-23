@@ -71,24 +71,32 @@ functions:
       - http:
           path: products
           method: get
+          cors:
+            origin: "*"
   getProductsById:
     handler: src/products.getProductsById
     events:
       - http:
           path: products/{productId}
           method: get
+          cors:
+            origin: "*"
   addProduct:
     handler: src/products.createProduct
     events:
       - http:
           path: products
           method: post
+          cors:
+            origin: "*"
   updateStock:
     handler: src/stocks.updateStock
     events:
       - http:
           path: stocks
           method: put
+          cors:
+            origin: "*"
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
